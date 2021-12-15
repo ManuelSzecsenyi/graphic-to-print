@@ -1,4 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Cormorant+Garamond&family=Oswald:wght@500&display=swap');
+
+
 /* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+/*
+font-family: 'Cinzel', serif;
+font-family: 'Cormorant Garamond', serif;
+font-family: 'Oswald', sans-serif;
+*/
+
+body {
+    font-family: 'Cormorant Garamond', sans-serif;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+}
+
+h2 {
+    font-family: 'Oswald', sans-serif;
+}
+
+p {
+    font-size: 24px;
+}
