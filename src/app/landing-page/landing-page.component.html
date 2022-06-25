@@ -1,16 +1,17 @@
 <nav class="fixed bg-white w-screen px-10 py-5 font-bold text-xl border-b-2 z-20">
-    <div class="container">
+    <div class="container flex items-center gap-6">
+        <img class="h-12 w-auto" src="assets/logo.png" />
         <span>graphic to print</span> 
     </div>
 </nav>
 
 <section class="relative">
-    <video autoplay loop muted class="w-full h-screen object-cover">
-        <source src="assets/hero-video.mp4" />
+    <video #vid onloadeddata="this.play();" playsinline loop muted  class="w-full h-screen object-cover">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
     </video>
 
-    <div class=" absolute top-0 left-0 w-full h-screen flex flex-col gap-6 items-center justify-center">
-        <img class="w-full md:w-64" src="assets/logo.png" />
+    <div class="absolute top-0 left-0 w-full h-screen flex flex-col gap-6 items-center justify-center">
+        <img class="w-full px-5 md:w-64" src="assets/logo.png" />
         <h1 class="text-3xl md:text-6xl text-center">GRAFIK-DESIGN & <br>DRUCKVERMITTLUNG</h1>
     </div>
     
@@ -66,4 +67,41 @@
 
 <div class="parallax"></div>
 
+<section class="py-10  px-3">
+    <div class="container flex mx-auto gap-6 text-xl">
+        <span (click)="this.toggleModal('Impressum')" class="cursor-pointer">Impressum</span>
+        <span (click)="this.toggleModal('Kontakt')" class="cursor-pointer">Kontakt</span>
+    </div>
+</section>
+
+
+<div [ngClass]="{'modal opacity-0 pointer-events-none': !this.modalOpen, 'modal-active': this.modalOpen}" class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center">
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
     
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+      
+       <!-- Add margin if you want to see some of the overlay behind the modal-->
+      <div class="modal-content py-4 text-left px-6">
+        <!--Title-->
+        <div class="flex justify-between items-center pb-3">
+          <p class="text-2xl font-bold">{{this.modalHeader}}</p>
+          <!--
+          <div class="modal-close cursor-pointer z-50">
+            <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+            </svg>
+          </div>
+          -->
+        </div>
+
+        <!--Body-->
+        <p class="text-xl" style="white-space: pre-line" [innerHtml]="this.modalText"></p>
+
+        <!--Footer-->
+        <div class="flex justify-end pt-2">
+          <button class="modal-close px-4 bg-gray-400 p-3 rounded-lg text-white hover:bg-gray-500" (click)="this.toggleModal('')">Schließen</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
